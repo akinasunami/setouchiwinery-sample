@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<!-- 文字コード！-->
+<meta charset="UTF-8">
+	<title>winery setouchi</title>
+	<!-- アイコンフォント用 -->
+	<link href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" rel="stylesheet">
+	<!-- スタイルシート -->
+<link rel="stylesheet" href="reset.min.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="slick/slick.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
+<!-- レスポンシブ -->
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<!-- ファビコン -->
+<link rel="shortcut icon" href="images/favicon.ico">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="images/android-chrome-256x256.png">
+
+<!-- スライダー -->
+<link rel="stylesheet" href="slick/slick-theme.css" />
+<!-- jQuery/slick  -->
+<script type="text/javascript" src="jquery-3.2.1.min.js"></script>	
+<script src="slick/slick.min.js"></script>
+
+<!-- ScrollReveal を読み込む -->
+	<script src="https://unpkg.com/scrollreveal"></script>
+<!-- スムーススクロールのプラグイン -->
+	<script src="smooth-scroll.min.js"></script>
+
+<script type="text/javascript">
+
+//MVスライダー
+$(function() {
+	//ここにSlickのjQueryを記述
+    $('.top_photo').slick({
+			  infinite: true,
+			  // slidesToShow: 1,
+			  // slidesToScroll: 1,
+			  dots: false,
+			  fade: true,
+			  cssEase: 'linear',
+			  autoplay: true,
+			  autoplaySpeed: 3000
+			});
+});
+</script>
+
+<!-- information-blogのslick -->
+	<script type="text/javascript">
+		$(function() {
+		    $('.multiple-item').slick({
+		    	autoplay: true,
+			    autoplaySpeed: 3000,
+			    variableWidth:true,
+			    centerMode: true,
+				infinite: true,
+				dots:true,
+				slidesToShow: 3,
+				slidesToScroll: 1,
+				responsive: [
+				{
+				   breakpoint: 990,
+				        settings: {
+				            slidesToShow: 2,
+				            slidesToScroll: 1,
+				   }
+				},{
+				   breakpoint: 560,
+				        settings: {
+				            slidesToShow: 1,
+				            slidesToScroll: 1,
+				        }
+				   }
+				]
+		    });
+		});
+	</script>
+
+
+<!-- Smooth Scroll -->
+<script type="text/javascript">
+	
+		var scroll = new SmoothScroll('a[href*="#"]',{
+			header: '#header-nav',
+			speed: 800
+		});
+
+		$(function() {
+		// story画像の部分
+		var img1 = $('.story1');
+		var img2 = $('.story2');
+		var img3 = $('.story3');
+		var img4 = $('.story4');
+		img1.hide();
+		img2.hide();
+		img3.hide();
+		img4.hide();
+		//スクロールしてページトップから600に達したらimg1を表示、700に達したらimg2を表示、それ未満は非表示
+		$(window).scroll(function () {
+		  if ($(this).scrollTop() > 700) {
+				img1.fadeIn();
+				img2.fadeIn();
+				img3.fadeIn();
+		        img4.fadeIn();
+		  } 
+		  // else if ($(this).scrollTop() > 500) {
+		  //       img3.fadeIn();
+		  //       img4.fadeIn();
+		  // } 
+		  else {
+		        img1.fadeOut();
+		        img2.fadeOut();
+		        img3.fadeOut();
+		        img4.fadeOut();
+		  }
+		});
+
+
+
+		var topBtn = $('.to_top');
+		    topBtn.hide();
+    		//スクロールしてページトップから800に達したらボタンを表示
+    		$(window).scroll(function () {
+        		if ($(this).scrollTop() > 700) {
+		            topBtn.fadeIn();
+        		} else {
+            		topBtn.fadeOut();
+        		}
+    		});
+		});
+
+	</script>
+
+		  <!-- ドロワーメニューが途中から出てくる実装 -->
+	  <script type="text/javascript">
+$(function() {
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > 650) {
+            $('.drawer_icon').addClass('fixed');
+            $('.tab_sp').addClass('fixed');
+        } else {
+            $('.drawer_icon').removeClass('fixed');
+            $('.tab_sp').removeClass('fixed');
+        }
+    });
+});
+
+ 
+$(function() {
+   $('.drawer_checkbox').on('change', function(){
+    var menu_text = document.getElementsByClassName('drawer_icon')[0].lastElementChild;
+    if($(this).prop("checked")) {
+     menu_text.textContent = "close";
+     menu_text.style.color = '#ffffff';
+    }
+    else {
+     menu_text.textContent = "menu";
+     menu_text.style.color = '#000';
+    }
+   });
+  });
+
+</script>
+<!-- ↑menuからcloseになる実装 -->
+
+
+<!-- モーダル -->
+<script type="text/javascript">
+$(function () {
+  $('#contact').click(function(){
+      $('#modalArea').fadeIn();
+  });
+  $('#closeModal , #modalBg').click(function(){
+    $('#modalArea').fadeOut();
+  });
+});
+</script>
+
+</head>
+
+
+<body>
+<div class="wrapper">
+	<header>
+		<h1><a href="#"><img src="images/winery_setouchi.png"></a></h1>
+
+		<!-- ドロワー -->
+	  <div class="drawer">
+	    <input class="drawer_checkbox" id="drawerCheckbox" type="checkbox" >
+	    <!-- ドロワーアイコン部分 -->
+	    <label class="drawer_icon" for="drawerCheckbox">
+	     	<span class="drawer_icon-item"></span>
+	     	<p>menu</p>
+	    </label>
+	    <!-- 背景を暗く -->
+	    <label class="drawer_overlay" for="drawerCheckbox"></label>
+	    <!-- ドロワー内のメニュー -->
+	    <nav class="drawer_menu">
+	      <ul>
+	        <li>
+	          <a href="#">home</a>
+	        </li>
+	        <li>
+	          <a href="#story">story</a>
+	        </li>
+	        <li>
+	          <a href="#winery">winery</a>
+	        </li>
+	        <li>
+	          <a href="#wine">wine</a>
+	        </li>
+	        <li>
+	          <a href="#restaurant">restaurant</a>
+	        </li>
+	        <li>
+	          <a href="#shop">shop</a>
+	        </li>
+	        <li>
+	          <a href="#information">information</a>
+	        </li>
+	        <li>
+	          <a href="#access">access</a>
+	        </li>
+	      </ul>
+	    </nav>
+	  </div>
+
+		<ul class="gnav">
+			<li><a href="#">home</a></li>
+			<li><a href="#story">story</a></li>
+			<li><a href="#winery">winery</a></li>
+			<li><a href="#wine">wine</a></li>
+			<li><a href="#restaurant">restaurant</a></li>
+			<li><a href="#information">information</a></li>
+			<li><a href="#access">access</a></li>
+			<li class="sns1"><a href="#" class="bgd"><img src="images/instagram.png" alt="Instagram" class="instagram"></a></li>
+			<li class="sns1"><a href="#" class="bgd"><img src="images/facebook.png" alt="Facebook" class="facebook"></a></li>
+			<li class="sns2"><a href="#" class="bgd"><img src="images/logo_symbol.png" alt="note" class="note"></a></li>
+			<li class="online"><a href="#shop"><img src="images/cart.png" alt="cart" class="cart"> online shop</a>
+		</li>
+		</ul>
+
+		<!-- 固定　オンラインショップ -->
+		<div class="tab_sp"><a href="#shop" class="border"><img src="images/cart.png" alt="cart" class="cart"> online<br class="br-sp"><span> shop</span></a></div>
+		<!-- 終わり -->
+
+
+	<div class="fixed_contact">
+  		<div class="fixed_head"><a href="#contact" class="border">CONTACT</a></div>
+  		<ul class="sns_list">
+    		<li>
+    			<a href="#" class="sns"><img class="side-sns" src="images/instagram.png" alt="instagram">
+    			</a>
+    		</li>
+    		<li>
+    			<a href="#" class="sns"><img class="side-sns" src="images/facebook.png" scale="0" alt="facebook"></a>
+    		</li>
+    		<li>
+    			<a href="#" class="sns"><img class="sns-note" src="images/logo_symbol.png" scale="0" alt="note"></a>
+    		</li>
+    	</ul>
+	</div>
+
+	<div class="topContainer">
+		<div class="top_photo">
+		<img src="images/top1_1.jpg" alt="" class="top" alt="winery setouchiのトップ画像1">
+		<img src="images/top2.jpg" alt="" class="top" alt="winery setouchiのトップ画像2">
+		<img src="images/top3_1.jpg" alt="" class="top" alt="winery setouchiのトップ画像3">
+		</div>
+		<div href="#" class="top_scroll font"><span></span>scroll</div>
+	</div>
+	</header>
+
+	<div class="storyContainer anime" id="story">
+					<div class="story1">
+				<img src="images/story1.png" alt="">
+			</div><!-- story1の終了 -->
+			<div class="story2">
+				<img src="images/story2.png" alt="">
+			</div><!-- story2の終了 -->
+		<h2>story</h2>
+		<h4>ストーリー</h4>
+		<p class="p_story">
+			ワインはその土地の素晴らしさを私たちに伝えてくれます。<br>
+			また瀬戸内にはすべてを包み込んでくれる穏やかさがあります。<br>
+			2つの魅力を伝えたいという想いからwinery setouchiは生まれました。<br>
+			ぶどう栽培の様子から醸造の様子、またペアリングまで<br class="br-pc">
+			ワインを幅広く楽しんでいただけるワイナリーです。<br>
+			ワインをもっと楽しみたい人たちで繋がることができるコミュニティや講座も。<br>
+			瀬戸内の心地よさを感じながら、<br class="br-sp">ワインを楽しんでください。</p>
+				<div class="story3">
+					<img src="images/story3.png" alt="">
+				</div><!-- story3の終了 -->
+				<div class="story4">
+				<img src="images/story4.png" alt="">
+					</div><!-- story4の終了 -->
+	</div><!-- storyContainerの終了 -->
+
+	<div class="point_three anime">
+	<ul>
+		<li class="point">
+		<img src="images/point1.png" alt="瀬戸内">
+		<h3>瀬戸内の空気を感じながら<br>
+			ワインを楽しむことができる</h3>
+		</li>
+		<li class="point">
+		<img src="images/point2.png" alt="ワイン造り">
+		<h3>ぶどう栽培から醸造まで<br>
+			ワイン造りを肌で体感できる</h3>
+		</li>
+		<li class="point">
+		<img src="images/point3.png" alt="コミュニティ">
+		<h3>コミュニティで繋がったり<br>
+			ワインの楽しみ方を現地よりお届け</h3>
+		</li>
+	</div><!-- point_threeの終了-->
+
+	<section class="wave_container_reverse">
+	  <div class="wave_reverse"></div>
+	</section>
+	<div class="main">
+	<div class="mainContainer">
+		<div class="flex winery anime" id="winery">
+			<div class="wrap">
+			<div class="winery_title">
+				<h2>winery</h2>
+				<h4>ワイナリー</h4>
+			</div>
+			<p>ぶどう畑は岡山県倉敷市にあります。<br>
+				瀬戸内の温暖な気候はぶどう栽培に適しており、<br class="br-pc">
+				海と山の両方の自然と土地を活かした栽培をしています。<br class="br-pc">
+				併設しているワイナリーは、2018年秋に完成しました。<br>
+				テラスからぶどう畑を一望することができ、<br class="br-pc">
+				醸造の様子もガラス越しから楽しむことができます。</p>
+		<div class="section_btn">
+			<a href="#">Read more</a>
+		</div>
+		</div>
+		<img src="images/winery.png" alt="ワイナリー">
+	</div> <!-- wineryの終了-->
+
+		<div class="flex wine anime">
+			<div class="wrap">
+			<div class="wine_title" id="wine">
+				<h2>wine</h2>
+				<h4>ワイン</h4>
+			</div>
+			<p>私たちの作るワインは、無農薬・酸化防止剤不使用の<br class="br-pc">
+			ナチュラルワインと呼ばれるワインです。<br class="br-pc">
+			瀬戸内という唯一無二の風土を、このワインを飲む<br class="br-pc">
+			ことで体感してほしい。そのような想いを込めて<br class="br-pc">
+			ワイン造りに日夜励んでいます。</p>
+		<div class="section_btn">
+			<a href="#">Read more</a>
+		</div>
+		</div>
+			<img src="images/wine.png" alt="ワイン">
+		</div><!-- wineの終了-->
+	</div><!-- mainContainerの終了-->
+</div> <!-- mainの終了 -->
+<section class="wave_container">
+	  <div class="wave"></div>
+	</section>
+
+	<!-- restaurant -->
+	<div class="restaurant anime" id="restaurant">
+		<h2>restaurant</h2>
+		<h4>併設レストラン</h4>
+		<div class="res_img">
+		<img src="images/restaurant.png" alt="レストラン情報">
+		</div>
+		<div class="res_wrap">
+			<div class="res_text">
+				<p>自社で醸造したワインを併設のレストランで楽しむことができます。<br class="br-pc">
+					お料理はすべて瀬戸内の食材を使用しているので、<br class="br-pc">ぜひ瀬戸内のワインと食材のペアリングをお楽しみください。</p>
+				<p>営業時間：11時〜21時<br>
+				月曜定休日<br class="br-sp">（祝日は営業・翌日火曜が休業日）</p>
+				</div>
+				<div class="section_btn">
+					<a href="#">Read more</a>
+				</div>
+		</div>
+	</div><!-- restaurantの終了-->
+
+
+		<div class="shop-wrapper anime" id="shop">
+			<h2>shop</h2>
+			<h4>ショップ</h4>
+			<div class="pdtContainer">
+				<ul class="item_list">
+					<li class="item">
+					<a href="#shop" class="bgd">
+						<div class="item_image">
+							<img src="images/pdt1.png" alt="商品1">
+						</div>
+						<div>
+							<p class="item_txt1">2019　Chardnnay　　　　3,780円(税込) <br>（白ワイン/辛口/750ml）</p>
+						</div>
+					</a>
+					</li>
+					<li class="item">
+					<a href="#shop" class="bgd">
+						<div class="item_image">
+						<img src="images/pdt2.png" alt="商品2">
+						</div>
+						<div>
+							<p class="item_txt2">2019　Pinot Noir　　　　3,780円(税込) <br>（赤ワイン/ライトボディー/750ml）</p>
+						</div>
+					</a>
+					</li>
+					<li class="item">
+					<a href="#shop" class="bgd">
+						<div class="item_image">
+						<img src="images/pdt3.png" alt="商品3">
+						</div>
+						<div>
+							<p class="item_txt3">2019　ROSE　　　　　3,780円(税込) <br>（赤ワイン/ライトボディー/750ml）</p>
+						</div>
+					</a>
+					</li>
+					<li class="item">
+					<a href="#shop" class="item4">
+						<div class="item_image"><img src="images/pdt4.png" alt="商品4">
+						</div>
+						<div>
+							<p class="item_txt4">2018　Chardnnay　　　　3,780円(税込) <br>（白ワイン/辛口/750ml）</p>
+						</div>
+					</a>
+					</li>
+					<li class="item">
+					<a href="#shop" class="item5">
+						<div class="item_image"><img src="images/pdt5.png" alt="商品5">
+						</div>
+						<div>
+							<p class="item_txt5">缶バッジ　　　　　　　500円(税込)
+							</p>
+						</div>
+					</a>
+					</li>
+					<li class="item">
+					<a href="#shop" class="bgd">
+						<div class="item_image">
+							<img src="images/pdt6.png" alt="商品6">
+						</div>
+						<div>
+							<p class="item_txt6">エコバック　　　　　　1,800円(税込)
+							</p>
+						</div>
+					</a>
+					</li>
+				</ul>
+			</div><!-- pdtContainerの終了-->
+		</div><!-- shop-wrapperの終了-->
+
+	<section class="wave_container_reverse">
+	  <div class="wave_reverse"></div>
+	</section>
+
+
+	<div class="info_main">
+	<div class="information anime" id="information">
+		<h2>information</h2>
+		<h4>ご案内</h4>
+			<section class="blog_wrapper anime">
+				<div class="inner">
+					<div class="blog_content multiple-item">
+						<div class="blog_part">
+							<a href="#information">
+								<img src="images/blog_img1.png">
+							</a>
+							<p>
+							<a href="#information" class="bgd">
+							winery setouchiが1周年を迎えました！
+							</a>
+							</p>
+							<p class="blog_date">2019-09-10</p>
+						</div>
+
+
+						<div class="blog_part" id="blog">
+							<a href="#information">
+								<img src="images/blog_img3.png">
+							</a>
+							<p>
+							<a href="#information" class="bgd">
+							新商品のご案内
+							</a>
+							</p>
+							<p class="blog_date">2019-12-02</p>
+						</div>
+
+						<div class="blog_part" id="blog">
+							<a href="#information">
+								<img src="images/blog_img2.png">
+							</a>
+							<p>
+							<a href="#information" class="bgd">
+							winery setouchiのコミュニティを始めます
+							</a>
+							</p>
+							<p class="blog_date">2020-01-04</p>
+						</div>
+						<div class="blog_part" id="blog">
+							<a href="#information">
+								<img src="images/blog_img4.png">
+							</a>
+							<p>
+							<a href="#information" class="bgd">
+							コロナにおける営業自粛について
+							</a>
+							</p>
+							<p class="blog_date">2020-04-06</p>
+						</div>
+						<div class="blog_part" id="blog">
+							<a href="#information">
+								<img src="images/blog_img5.png">
+							</a>
+							<p>
+							<a href="#information" class="bgd">コロナにおける営業時間と対策について
+							</a>
+							</p>
+							<p class="blog_date">2020-05-07</p>
+						</div>
+						<div class="blog_part" id="blog">
+							<a href="#information">
+								<img src="images/blog_img6.png">
+							</a>
+							<p>
+							<a href="#information" class="bgd">オンラインのワインセミナーを開催します
+							</a>
+							</p>
+							<p class="blog_date">2020-05-10</p>
+						</div>
+
+					</div>
+				</div>
+			</section>
+	</div>
+	</div><!-- informationの終了-->
+	<section class="wave_container">
+	  <div class="wave"></div>
+	</section>
+
+	<div class="acsess anime" id="access">
+		<h2>access</h2>
+		<h4>アクセス</h4>
+		<div class="acs_main">
+		<div class="map">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d58214.0746840058!2d133.7344483524022!3d34.44006493908474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z5bKh5bGx55yM5YCJ5pW35biC5YWQ5bO2!5e0!3m2!1sja!2sjp!4v1600226173031!5m2!1sja!2sjp" width="600" height="350" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+		</div>
+		<div class="adress">
+		<p class="adr_txt">
+			711-XXXX　岡山県倉敷市〇〇1-2-3<br>
+			TEL:086-XXX-XXXX　　FAX:086-XXX-XXXX
+		</p>
+		<p class="acs_txt">飛行機／岡山空港から車で1時間10分<br>
+			電車／岡山駅から在来線で20分「〇〇駅」<br>
+			<span>そこから車で20分</span>
+			</p>
+				<div class="flex contact_part" id="contact">
+					<div class="section_btn">
+						<a href="#contact">お問い合わせ</a>
+					</div>
+				<div class="section_btn">
+					<a href="#contact">ツアーご予約</a>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div><!-- accessの終了-->
+
+	<!-- モーダルエリアここから -->
+<section id="modalArea" class="modalArea">
+  <div id="modalBg" class="modalBg"></div>
+  <div class="modalWrapper">
+    <div class="modalContents">
+  <div class="Form">
+  <div class="Form-Item">
+    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>氏名</p>
+    <input type="text" class="Form-Item-Input" placeholder="例）山田太郎">
+  </div>
+  <div class="Form-Item">
+    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>電話番号</p>
+    <input type="text" class="Form-Item-Input" placeholder="例）000-0000-0000">
+  </div>
+  <div class="Form-Item">
+    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>メールアドレス</p>
+    <input type="email" class="Form-Item-Input" placeholder="例）example@gmail.com">
+  </div>
+  <div class="Form-Item">
+    <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>お問い合わせ内容</p>
+    <textarea class="Form-Item-Textarea"></textarea>
+  </div>
+  <input type="submit" class="Form-Btn" value="送信する">
+</div>
+    </div>
+    <div id="closeModal" class="closeModal">
+      ×
+    </div>
+  </div>
+</section>
+<!-- モーダルエリアここまで -->
+
+	
+
+	<!-- topへ飛ばすボタン -->
+	<div class="top_container">
+		<div class="to_top">
+			<a href="#top" class="bgd"><img src="images/to_top.png" alt="トップへ"></a><p>TOP</p>
+		</div>
+	</div>
+
+	<footer>
+		©️winery setouchi 2020
+	</footer>
+
+</div><!-- wrapperの終了-->
+
+
+<script>
+	// ドロワーメニューのリンクを押すとメニュー内部が閉じてくれる動作
+	$('.drawer_menu a[href]').on('click', function(event) {
+	$('#drawerCheckbox').trigger('click');
+});
+
+		ScrollReveal().reveal('.anime', {
+			reset: true,//要素が見えるたびにアニメーション表示させるか
+			mobile: false,//モバイル時でもアニメーションを適用するか
+       		origin: 'bottom',//アニメーションの方向
+       		duration: 800,//アニメーションの長さ
+       		delay: 600,//アニメーションの遅延
+       		opacity: 0//アニメーションを始めた時の不透明度
+       	});
+	</script>
+</body>
+</html>
